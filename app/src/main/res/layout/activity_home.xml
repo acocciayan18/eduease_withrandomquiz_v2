@@ -7,6 +7,7 @@
     android:background="@drawable/home_bg"
     tools:context=".Home">
 
+    <!-- Bottom-Right Create Button -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,16 +17,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="160dp"
                 android:layout_height="64dp"
-                android:src="@drawable/home_logo"
+                android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
-                android:importantForAccessibility="no" />
+                android:src="@drawable/home_logo" />
 
             <View
                 android:layout_width="0dp"
@@ -41,118 +42,72 @@
                 android:src="@drawable/person" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/quiz_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="Local Quizzes"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:layout_marginTop="0dp"
-            android:textStyle="bold" />
-
         <!-- Search Bar -->
-        <EditText
-            android:id="@+id/search_quiz"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textSize="16sp"
-            android:background="@drawable/solid_border"
-            android:drawableEnd="@drawable/search"
-            android:hint="Search created quizzes..."
-            android:textColorHint="@color/dark_gray"
-            android:textColor="@color/black"
-            android:gravity="center_vertical"
-            android:imeOptions="actionSearch"
-            android:inputType="text" />
 
         <!-- Quiz Buttons Row -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:padding="8dp"
+            android:gravity="center_vertical">
 
-            <Button
-                android:id="@+id/display_quizzes_button"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
+            <EditText
+                android:id="@+id/search_quiz"
+                android:layout_width="281dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
-                android:layout_margin="8dp"
-                android:text="Local Quizzes"
-                android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:background="@drawable/solid_border"
+                android:drawableEnd="@drawable/search"
+                android:gravity="center_vertical"
+                android:hint="Search created quizzes..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_gray"
+                android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/display_public_quizzes_button"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_margin="8dp"
-                android:text="Public Quizzes"
-                android:textColor="@android:color/white"
-                android:textSize="10sp" />
+            <Spinner
+                android:id="@+id/my_spinner"
+                android:layout_width="47dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/black" />
+
+
+
         </LinearLayout>
 
-        <!-- Bonus Flash Buttons Row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/local_bonus_flash_button"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_margin="8dp"
-                android:text="Local Bonus Flash"
-                android:textColor="@android:color/white"
-                android:textSize="10sp" />
-
-            <Button
-                android:id="@+id/bonus_flash_button"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_margin="8dp"
-                android:text="Public Bonus Flash"
-                android:textColor="@android:color/white"
-                android:textSize="10sp" />
-
-            <!-- 🔽 New Random Quiz Button -->
-            <Button
-                android:id="@+id/random_quiz_button"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_margin="8dp"
-                android:text="Random Quiz"
-                android:textSize="10sp" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/empty_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="No quizzes available"
-            android:textSize="16sp"
             android:layout_marginTop="100dp"
+            android:text="No quizzes available"
             android:textColor="@color/black"
+            android:textSize="16sp"
             android:visibility="gone" />
         <!-- RecyclerView for quizzes -->
+        <TextView
+            android:id="@+id/quiz_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="Local Quizzes"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/quizzes_recycler_view"
             android:layout_width="match_parent"
@@ -167,7 +122,6 @@
 
     </LinearLayout>
 
-    <!-- Bottom-Right Create Button -->
     <ImageButton
         android:id="@+id/create_btn"
         android:layout_width="64dp"

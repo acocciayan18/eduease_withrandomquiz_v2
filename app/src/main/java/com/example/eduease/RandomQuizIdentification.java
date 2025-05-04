@@ -3,7 +3,11 @@ package com.example.eduease;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -24,6 +28,7 @@ public class RandomQuizIdentification extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.ayan_activity_random_quiz_identification); // Link this to your provided XML
 
         questionText = findViewById(R.id.identification_question);
@@ -31,6 +36,10 @@ public class RandomQuizIdentification extends AppCompatActivity {
         submitButton = findViewById(R.id.submit_identification_button);
 
         loadIdentificationQuestions();
+        RecyclerView quizzesRecyclerView = findViewById(R.id.quizzes_recycler_view);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2); // 2 columns
+        quizzesRecyclerView.setLayoutManager(gridLayoutManager);
+
 
         submitButton.setOnClickListener(v -> {
             String userAnswer = answerInput.getText().toString().trim();
@@ -114,6 +123,8 @@ public class RandomQuizIdentification extends AppCompatActivity {
         finish();
     }
 
+
+    
     // Make sure this class matches your Firebase structure
     public static class IdentificationQuestion {
         private String question;

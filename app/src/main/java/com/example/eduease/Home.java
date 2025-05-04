@@ -12,6 +12,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -45,6 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +60,8 @@ public class Home extends AppCompatActivity implements QuizAdapter.QuizClickList
     private FirebaseFirestore db;
     private MediaPlayer mediaPlayer;
 
+    private Spinner my_spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,58 @@ public class Home extends AppCompatActivity implements QuizAdapter.QuizClickList
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
 
+
+            ///DROP DOWN
+        Spinner spinner = findViewById(R.id.my_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.dropdown_items, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            boolean isFirstSelection = true;
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Skip the first automatic selection
+                if (isFirstSelection) {
+                    isFirstSelection = false;
+                    return;
+                }
+
+                String selectedItem = parent.getItemAtPosition(position).toString().trim();
+
+                switch (selectedItem) {
+                    case "Local Quiz":
+                        loadQuizzesFromFirestore();
+                        break;
+                    case "Public quiz":
+                        vibrate();
+                        loadPublicQuizzesFromRealtime();
+                        break;
+                    case "Local Bonus Flash":
+                        loadLocalBonusFlashQuizzesFromRealtime();
+                        break;
+                    case "Bonus Flash":
+                        vibrate();
+                        loadBonusFlashQuizzesFromRealtime();
+                        break;
+                    case "Random Quiz":
+                        loadRandomQuizTopicsFromRealtime();
+                        break;
+                    default:
+                        // Optional: handle unknown selection
+                        break;
+                }
+            }
+
+     
+
+        @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Optional: handle no selection
+            }
+        });
 
 
         ayan_try_firebase.createAndFetchStudent(this);
@@ -95,38 +152,9 @@ public class Home extends AppCompatActivity implements QuizAdapter.QuizClickList
         setupSearchListener();
 
 
-        Button bonusFlashButton = findViewById(R.id.bonus_flash_button);
-        bonusFlashButton.setOnClickListener(v -> {
-            vibrate(); // optional
-            loadBonusFlashQuizzesFromRealtime();
-        });
-
-        Button displayQuizzesButton = findViewById(R.id.display_quizzes_button);
-        displayQuizzesButton.setOnClickListener(v -> {
-            loadQuizzesFromFirestore();
-        });
-
-        Button displayPublicQuizzesButton = findViewById(R.id.display_public_quizzes_button);
-        displayPublicQuizzesButton.setOnClickListener(v -> {
-            vibrate();
-            loadPublicQuizzesFromRealtime();
-        });
-
-        Button localBonusFlashButton = findViewById(R.id.local_bonus_flash_button);
-
-        localBonusFlashButton.setOnClickListener(v -> {
-            loadLocalBonusFlashQuizzesFromRealtime();
-        });
-
-        Button randomQuizButton = findViewById(R.id.random_quiz_button);
-
-        randomQuizButton.setOnClickListener(v -> {
-            loadRandomQuizTopicsFromRealtime();
-        });
-
-
 
     }
+
 
     @SuppressLint("NotifyDataSetChanged")
     private void loadBonusFlashQuizzesFromRealtime() {
@@ -839,3 +867,4 @@ public class Home extends AppCompatActivity implements QuizAdapter.QuizClickList
                 .show();
     }
 }
+

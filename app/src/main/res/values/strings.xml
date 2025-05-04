@@ -32,4 +32,15 @@
     <!-- Login -->
     <string name="settings_profile_image">Profile Image</string>
 
+    <!-- drop down buttons-->->
+    <string-array name="dropdown_items">
+        <item>Local Quiz</item>
+        <item>Public quiz </item>
+        <item>Local Bonus Flash</item>
+        <item> Bonus Flash</item>
+        <item>Random Quiz</item>
+
+    </string-array>
+
+
 </resources>

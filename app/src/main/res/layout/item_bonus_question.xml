@@ -22,5 +22,9 @@
             android:text="Bonus Points"
             android:textColor="@color/black"
             android:textSize="18sp" />
+
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
+

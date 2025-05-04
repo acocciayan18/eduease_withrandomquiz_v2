@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,6 +46,7 @@ public class TakeBonusFlash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.ayan_activity_take_bonus_flash);
 
         FirebaseOptions options = new FirebaseOptions.Builder()
@@ -59,6 +61,7 @@ public class TakeBonusFlash extends AppCompatActivity {
         } catch (IllegalStateException ignored) {
         }
 
+
         quizTitleTextView = findViewById(R.id.quiz_title);
         quizDescriptionTextView = findViewById(R.id.quiz_description);
         bonusPointsContainer = findViewById(R.id.bonus_points_container);
@@ -72,6 +75,7 @@ public class TakeBonusFlash extends AppCompatActivity {
         if (quizId == null || quizId.isEmpty()) return;
 
         loadQuizDetails(quizId);
+
     }
 
     private void loadQuizDetails(String quizId) {
