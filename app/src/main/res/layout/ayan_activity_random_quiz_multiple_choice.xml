@@ -4,7 +4,7 @@
     android:id="@+id/multiple_choice_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/create_quiz_txtbox"
+    android:background="@drawable/home_bg2"
     android:padding="16dp">
 
 

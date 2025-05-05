@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-    android:background="@drawable/getstarted_bg"
+    android:background="@drawable/gettingstarted_bg2"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:layout_marginTop="32dp"
             android:padding="8dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/eduease_logo"
+            android:src="@drawable/brain"
             tools:ignore="RtlSymmetry" />
 
         <ImageView

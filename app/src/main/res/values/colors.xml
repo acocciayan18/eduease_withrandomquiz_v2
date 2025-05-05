@@ -4,9 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_gray">#7A7A7A</color>
 
-    <color name="snow_pink">#FBEFEF</color>
-    <color name="pale_pink">#FFCFE2</color>
-    <color name="pastel_pink">#FFC1CC</color>
-    <color name="salmon_pink">#E8667F</color>
-    <color name="bubblegum_pink">#FB5288</color>
+    <color name="snow_pink">#EFF6FB</color>
+    <color name="pale_pink">#CFE8FF</color>
+    <color name="pastel_pink">#C1D4FF</color>
+    <color name="sky_pink">#669EE8</color>
+    <color name="bubblegum_pink">#5288FB</color>
+
 </resources>

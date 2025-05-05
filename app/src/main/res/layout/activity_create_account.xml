@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/createaccount_bg"
+    android:background="@drawable/gettingstarted_bg2"
     android:gravity="top"
     android:orientation="vertical"
     tools:context=".CreateAccount">
@@ -17,7 +17,7 @@
         android:layout_gravity="center"
         android:paddingTop="16dp"
         android:paddingStart="22dp"
-        android:src="@drawable/eduease_logo"
+        android:src="@drawable/brain"
         android:contentDescription="@string/logo_image"
         tools:ignore="RtlSymmetry" />
 
